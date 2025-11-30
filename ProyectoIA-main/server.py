@@ -5,6 +5,12 @@ import os
 import time
 
 app = Flask(__name__)
+if os.name == "nt":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 # Control de ejecución
 ultima_ejecucion = 0
@@ -75,7 +81,7 @@ def ejecutar_app():
     
 
 if __name__ == '__main__':
-    print("🚀 Servidor Flask iniciado")
-    print("📍 Accede a: http://localhost:5000")
+    print("Servidor Flask iniciado")
+    print("📍 Accede a: http://localhost:5500")
     print("⏹️  Presiona Ctrl+C para detener")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5500, debug=True)

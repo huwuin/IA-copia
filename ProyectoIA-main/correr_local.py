@@ -87,11 +87,11 @@ def main():
     # 5. Verificar instalaciones críticas
     print("🔍 Verificando instalaciones...")
     verificaciones = [
-        (f'"{python_final}" -c "import flask;', "Flask"),
-        (f'"{python_final}" -c "import ttkbootstrap;', "ttkbootstrap"),
-        (f'"{python_final}" -c "import PIL;', "Pillow"),
-        (f'"{python_final}" -c "import networkx;', "NetworkX"),
-        (f'"{python_final}" -c "import tkinter;', "Tkinter")
+        (f'"{python_final}" -c "import flask"', "Flask"),
+        (f'"{python_final}" -c "import ttkbootstrap"', "ttkbootstrap"),
+        (f'"{python_final}" -c "import PIL"', "Pillow"),
+        (f'"{python_final}" -c "import networkx"', "NetworkX"),
+        (f'"{python_final}" -c "import tkinter"', "Tkinter")
     ]
     
     for comando, modulo in verificaciones:
@@ -115,12 +115,21 @@ def main():
         # Esperar un poco a que el servidor inicie
         time.sleep(3)
         
+        if proceso_flask.poll() is not None:
+            stdout, stderr = proceso_flask.communicate()
+            print("❌ El servidor Flask terminó antes de tiempo")
+            if stdout:
+                print(f"STDOUT: {stdout}")
+            if stderr:
+                print(f"STDERR: {stderr}")
+            return
+        
         # 7. Abrir navegador automáticamente
-        print("🌍 Abriendo navegador en http://localhost:5000")
-        webbrowser.open("http://localhost:5000")
+        print("🌍 Abriendo navegador en http://localhost:5500")
+        webbrowser.open("http://localhost:5500")
         
         print("✅ Aplicación iniciada correctamente!")
-        print("📍 URL: http://localhost:5000")
+        print("📍 URL: http://localhost:5500")
         print("⏹️  Para detener: Cierra esta ventana o presiona Ctrl+C")
         
         # Esperar a que el proceso termine
