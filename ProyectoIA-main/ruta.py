@@ -2,15 +2,15 @@ import math
 import networkx as nx
 from flask import jsonify
 
-# Radio de la Tierra en metros
+#Radio de la Tierra en metros
 RADIO_TIERRA = 6371000.0
-# Imposiciones del usuario
+#Imposiciones del usuario
 accesibilidad = False
 bici = False
 
-# Función que recibe las coordenadas de dos puntos (latitud y longitud en grados) y retorna la distancia entre ellos en metros.
+#Función que recibe las coordenadas de dos puntos (latitud y longitud en grados) y retorna la distancia entre ellos en metros.
 def haversine(latitud1, longitud1, latitud2, longitud2):
-    # Convertir grados a radianes
+    #Convertir grados a radianes
     lat1_rad = math.radians(latitud1)
     lat2_rad = math.radians(latitud2)
     delta_lat_rad = math.radians(latitud2 - latitud1)
@@ -21,10 +21,10 @@ def haversine(latitud1, longitud1, latitud2, longitud2):
 
     return RADIO_TIERRA * angulo_central
 
-# Inicializa el grafo que representa las líneas y estaciones del metro
+#Inicializa el grafo que representa las líneas y estaciones del metro
 def inicializar_grafo():
     grafo = nx.Graph()
-    # Agregar nodos con coordenadas (latitud y longitud)
+    #Agregar nodos con coordenadas (latitud y longitud)
     grafo.add_node("Balderas", latitud=19.427581967055374, longitud=-99.14762784249862,
                     px=1546, py=357, accesibilidad=True, bici=True, lineas=["1", "3"])
     grafo.add_node("Cuauhtémoc", latitud=19.425796516896693, longitud=-99.15463964895125,
@@ -145,9 +145,9 @@ G = inicializar_grafo()
 def peso_arista(u, v, data):
     d = data.get('distancia', 0)
 
-    # Penalización por cambio de línea si activaste accesibilidad (solo afecta a Tacubaya)
+    #Penalización por cambio de línea si activaste accesibilidad (solo afecta a Tacubaya)
     if accesibilidad and u == "Tacubaya":
-        # Aplicar penalización si se cambia de línea
+        #Aplicar penalización si se cambia de línea 
         d += 5000
 
     return d
@@ -156,14 +156,14 @@ def estacion_biciparking_mas_cercana(origen):
     lat_origen = G.nodes[origen]['latitud']
     lon_origen = G.nodes[origen]['longitud']
     
-    # Filtramos solo las estaciones que sí tienen biciparking
+    #Filtramos solo las estaciones que sí tienen biciparking
     bici_estaciones = [(nodo, G.nodes[nodo]['latitud'], G.nodes[nodo]['longitud'])
                         for nodo in G.nodes if G.nodes[nodo].get('bici', False)]
     
     if not bici_estaciones:
-        return origen  # por si ninguna tiene biciparking
+        return origen  #por si ninguna tiene biciparking
     
-    # Buscamos la más cercana
+    #Buscamos la más cercana
     estacion_cercana = min(
         bici_estaciones,
         key=lambda x: haversine(lat_origen, lon_origen, x[1], x[2])
@@ -172,7 +172,7 @@ def estacion_biciparking_mas_cercana(origen):
     return estacion_cercana[0]
 
 
-# Función heurística para A*
+#Función heurística para A*
 def h(actual, objetivo):
     output = 0
     lat1 = G.nodes[actual]['latitud']
@@ -182,11 +182,11 @@ def h(actual, objetivo):
     output = haversine(lat1, lon1, lat2, lon2)
     return output
 
-# Algoritmo A* para encontrar la ruta más corta
+#Algoritmo A* para encontrar la ruta más corta
 def a_estrella(origen, destino, G):
     ruta = nx.astar_path(G, origen, destino, heuristic=h, weight=peso_arista)
     distancia_total = nx.astar_path_length(G, origen, destino, heuristic=h, weight=peso_arista)
-    # -------- Calcular líneas visitadas --------
+    #Calcular líneas visitadas
     lineas_visitadas = []
     for i in range(len(ruta)-1):
         inter = set(G.nodes[ruta[i]]['lineas']).intersection(G.nodes[ruta[i+1]]['lineas'])
@@ -194,6 +194,6 @@ def a_estrella(origen, destino, G):
             lineas_visitadas.append(inter.pop())
     lineas_visitadas = sorted(set(lineas_visitadas), key=int)
 
-    tiempo_minutos = round(distancia_total / 666) + 2 * (len(lineas_visitadas) - 1) # 666 metros por minuto aprox
+    tiempo_minutos = round(distancia_total / 666) + 3 * (len(lineas_visitadas) - 1) #666 metros por minuto aprox
 
     return ruta, tiempo_minutos, lineas_visitadas
