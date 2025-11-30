@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bonificaciones</title> <!-- Título que aparece en la pestaña del navegador -->
+  <link rel="stylesheet" href="css/tarifas.css"> <!-- CSS específico de esta página -->
+  <link rel="stylesheet" href="css/index.css"> <!-- CSS general del sitio -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- ===== BARRA SUPERIOR UTILIDADES ===== -->
+  <header id="util-top" role="banner" aria-label="Barra superior utilidades">
+    <div class="util-top__inner">
+
+      <!-- Lado izquierdo: accesibilidad e idioma -->
+      <div class="util-top__left">
+        <a href="accesibilidad.html" class="util-top__link" id="accessibility-link">ACCESIBILIDAD</a>
+        <!-- Selector de idioma -->
+        <div class="util-top__lang">
+          <!-- Botón que muestra el idioma actual -->
+          <button class="util-top__lang-btn" id="language-btn" aria-haspopup="listbox" aria-expanded="false">ES</button>
+          <ul class="util-top__lang-list" id="language-list" role="listbox">
+            <li><a href="#" data-lang="en">ENGLISH</a></li>
+            <li><a href="#" data-lang="es">ESPAÑOL</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lado derecho: autores y logo -->
+      <div class="util-top__right">
+        <a href="autoria.html" class="util-top__link util-top__contacto" id="made-by">HECHO POR</a>
+        <a href="#" class="util-top__logo" aria-label="Ciudad de Mexico">
+          <img src="img/bandera.png" alt="Bandera CDMX">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==== NAVEGACIÓN PRINCIPAL ==== -->
+  <nav id="main-nav" aria-label="Navegación principal">
+    <div class="main-nav__inner">
+      <a href="index.html" class="main-nav__logo" aria-label="Ir al inicio">
+        <img src="img/logo.png" alt="Logo CDMX">
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==== CONTENIDO ==== -->
+  <main class="tarifas-layout">
+
+    <!-- Bloque superior de pestañas grandes para navegar entre secciones -->
+    <section class="tarifas-tabs" aria-label="Secciones de información">
+      <!-- Pestaña: Tipos de tarjeta -->
+      <a href="tTarjetas.html" class="tarifas-tab"><!-- Enlace -->
+        <div class="tarifas-tab__icon">
+          <img src="img/tTarjeta.png" alt="Tipos de tarjeta" id="card-types-img"><!-- Imagen -->
+        </div>
+        <span class="tarifas-tab__text" id="card-types-text">TIPOS DE TARJETA</span><!-- Titulo -->
+      </a>
+
+      <!-- Pestaña: Tarifas -->
+      <a href="tarifas.html" class="tarifas-tab"><!-- Enlace -->
+        <div class="tarifas-tab__icon">
+          <img src="img/tarifas.png" alt="Tarifas" id="fares-img"><!-- Imagen -->
+        </div>
+        <span class="tarifas-tab__text" id="fares-text">TARIFAS</span><!-- Titulo -->
+      </a>
+
+      <!-- Pestaña activa: Bonificaciones -->
+      <a href="bonificaciones.html" class="tarifas-tab tarifas-tab--active"><!-- Enlace -->
+        <div class="tarifas-tab__icon">
+          <img src="img/bonificaciones.png" alt="Bonificaciones" id="discounts-img"><!-- Imagen -->
+        </div>
+        <span class="tarifas-tab__text" id="discounts-text">BONIFICACIONES</span><!-- Titulo -->
+      </a>
+    </section>
+
+    <!-- Contenido central: título + texto -->
+    <section class="tarifas-content">
+      <h1 class="tarifas-title" id="page-title">Bonificaciones</h1> <!--Título -->
+
+      <!-- Bloque con texto descriptivo -->
+      <article class="tarifas-box">
+        <p id="paragraph-1">
+          De acuerdo con las medidas vigentes de apoyo al transporte público, el Metro de la Ciudad de México aplica
+          distintos programas de bonificación
+          destinados a facilitar la movilidad de los usuarios que más lo necesitan.
+        </p>
+
+        <p id="paragraph-2">
+          Actualmente se mantiene una reducción del 40% en determinados títulos multiviaje y modalidades especiales, con
+          el objetivo de promover el uso del
+          transporte público y reducir los costos de desplazamiento para estudiantes, personas trabajadoras y usuarios
+          frecuentes.
+        </p>
+
+        <p id="paragraph-3">
+          Estas bonificaciones no se aplican al billete sencillo ni a los títulos turísticos, que conservan su tarifa
+          habitual.
+        </p>
+
+        <p id="paragraph-4">
+          Las ayudas económicas destinadas a financiar estas reducciones son aportadas por las autoridades competentes
+          en materia de movilidad y transporte,
+          garantizando así la continuidad del servicio y el acceso equitativo a toda la ciudadanía.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <!-- ==== SCRIPT ==== -->
+  <script>
+    // Textos para los diferentes idiomas
+    const texts = {
+      "es": {
+        "accessibility-link": "ACCESIBILIDAD",
+        "made-by": "HECHO POR",
+        "language-btn": "ES",
+        "page-title": "Bonificaciones",
+        "card-types-text": "TIPOS DE TARJETA",
+        "card-types-img": "Tipos de tarjeta",
+        "fares-text": "TARIFAS",
+        "fares-img": "Tarifas",
+        "discounts-text": "BONIFICACIONES",
+        "discounts-img": "Bonificaciones",
+        "paragraph-1": "De acuerdo con las medidas vigentes de apoyo al transporte público, el Metro de la Ciudad de México aplica distintos programas de bonificación destinados a facilitar la movilidad de los usuarios que más lo necesitan.",
+        "paragraph-2": "Actualmente se mantiene una reducción del 40% en determinados títulos multiviaje y modalidades especiales, con el objetivo de promover el uso del transporte público y reducir los costos de desplazamiento para estudiantes, personas trabajadoras y usuarios frecuentes.",
+        "paragraph-3": "Estas bonificaciones no se aplican al billete sencillo ni a los títulos turísticos, que conservan su tarifa habitual.",
+        "paragraph-4": "Las ayudas económicas destinadas a financiar estas reducciones son aportadas por las autoridades competentes en materia de movilidad y transporte, garantizando así la continuidad del servicio y el acceso equitativo a toda la ciudadanía."
+      },
+
+      "en": {
+        "accessibility-link": "ACCESSIBILITY",
+        "made-by": "MADE BY",
+        "language-btn": "EN",
+        "page-title": "Discounts",
+        "card-types-text": "CARD TYPES",
+        "card-types-img": "Card types",
+        "fares-text": "FARES",
+        "fares-img": "Fares",
+        "discounts-text": "DISCOUNTS",
+        "discounts-img": "Discounts",
+        "paragraph-1": "According to current public transport support measures, the Mexico City Metro implements various discount programs designed to facilitate mobility for users who need it most.",
+        "paragraph-2": "Currently, a 40% reduction is maintained on certain multi-trip passes and special modalities, with the goal of promoting public transport use and reducing travel costs for students, workers, and frequent users.",
+        "paragraph-3": "These discounts do not apply to single tickets or tourist passes, which maintain their regular fare.",
+        "paragraph-4": "The financial aid to fund these reductions is provided by the competent mobility and transport authorities, thus ensuring service continuity and equitable access for all citizens."
+      }
+    };
+
+    // Función para cambiar el idioma
+    function setLanguage(lang) {
+      // Actualizar todos los elementos con id en el objeto texts
+      for (const key in texts[lang]) {
+        const element = document.getElementById(key);
+        if (element) {
+          if (element.tagName === 'IMG') {
+            // Para imágenes, actualizar el atributo alt
+            element.alt = texts[lang][key];
+          } else {
+            // Para otros elementos, actualizar el texto
+            element.innerText = texts[lang][key];
+          }
+        }
+      }
+
+      // Actualizar el botón de idioma
+      document.getElementById('language-btn').innerText = texts[lang]['language-btn'];
+
+      // Actualizar el atributo lang del html
+      document.documentElement.lang = lang;
+
+      // Actualizar el título de la página
+      document.title = texts[lang]['page-title'];
+
+      // Guardar preferencia de idioma
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function () {
+      // Configurar elementos
+      const langWrapper = document.querySelector('.util-top__lang');
+      const langBtn = document.getElementById('language-btn');
+      const langList = document.getElementById('language-list');
+
+      // Cargar idioma guardado o español por defecto
+      const savedLang = localStorage.getItem('preferred-language') || 'es';
+      setLanguage(savedLang);
+
+      // Abrir/cerrar lista de idiomas
+      langBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = langWrapper.classList.toggle('is-open');
+        langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Cambiar idioma al seleccionar uno
+      document.querySelectorAll('#language-list a').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          setLanguage(lang);
+          langWrapper.classList.remove('is-open');
+          langBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Cerrar selector al hacer clic fuera
+      document.addEventListener('click', function (e) {
+        if (!langWrapper.contains(e.target)) {
+          langWrapper.classList.remove('is-open');
+          langBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

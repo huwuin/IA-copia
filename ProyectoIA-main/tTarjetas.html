@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tipos de Tarjeta</title>
+  <link rel="stylesheet" href="css/tarifas.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- ===== BARRA SUPERIOR UTILIDADES ===== -->
+  <header id="util-top" role="banner" aria-label="Barra superior utilidades">
+    <div class="util-top__inner">
+
+      <!-- Lado izquierdo: accesibilidad e idioma -->
+      <div class="util-top__left">
+        <a href="accesibilidad.html" class="util-top__link" id="accessibility-link">ACCESIBILIDAD</a><!-- Enlace -->
+
+        <!-- Selector de idioma -->
+        <div class="util-top__lang">
+          <button class="util-top__lang-btn" id="language-btn" aria-haspopup="listbox" aria-expanded="false">ES</button>
+          <ul class="util-top__lang-list" id="language-list" role="listbox">
+            <li><a href="#" data-lang="en">ENGLISH</a></li>
+            <li><a href="#" data-lang="es">ESPAÑOL</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lado derecho: autores y logo -->
+      <div class="util-top__right">
+        <a href="autoria.html" class="util-top__link util-top__contacto" id="made-by">HECHO POR</a><!-- Titulo -->
+        <a href="#" class="util-top__logo" aria-label="Ciudad de Mexico">
+          <img src="img/bandera.png" alt="Bandera CDMX"><!-- Imagen -->
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==== NAVEGACIÓN PRINCIPAL ==== -->
+  <nav id="main-nav" aria-label="Navegación principal">
+    <div class="main-nav__inner">
+      <a href="index.html" class="main-nav__logo" aria-label="Ir al inicio"><!-- Enlace-->
+        <img src="img/logo.png" alt="Logo CDMX"><!-- Imagen-->
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==== CONTENIDO PRINCIPAL ==== -->
+  <main class="tarifas-layout">
+
+    <!-- Bloque superior de pestañas grandes -->
+    <section class="tarifas-tabs" aria-label="Secciones de información">
+      <a href="tTarjetas.html" class="tarifas-tab tarifas-tab--active"><!-- Enlace -->
+        <div class="tarifas-tab__icon">
+          <img src="img/tTarjeta.png" alt="Tipos de tarjeta" id="card-types-img"><!-- Imagen -->
+        </div>
+        <span class="tarifas-tab__text" id="card-types-text">TIPOS DE TARJETA</span><!-- Titulo -->
+      </a>
+
+      <a href="tarifas.html" class="tarifas-tab"><!-- Enlace -->
+        <div class="tarifas-tab__icon">
+          <img src="img/tarifas.png" alt="Tarifas" id="fares-img"><!-- Imagen -->
+        </div>
+        <span class="tarifas-tab__text" id="fares-text">TARIFAS</span><!-- Titulo -->
+      </a>
+
+      <a href="bonificaciones.html" class="tarifas-tab"><!-- Enlace -->
+        <div class="tarifas-tab__icon">
+          <img src="img/bonificaciones.png" alt="Bonificaciones" id="discounts-img"><!-- Imagen -->
+        </div>
+        <span class="tarifas-tab__text" id="discounts-text">BONIFICACIONES</span><!-- Titulo -->
+      </a>
+    </section>
+
+    <!-- Contenido: título + texto -->
+    <section class="tarifas-content">
+      <h1 class="tarifas-title" id="page-title">Tipos de tarjeta</h1><!-- Titulo -->
+
+      <article class="tarifas-box">
+        <p id="paragraph-1">
+          Además del viaje individual, existen títulos y modalidades especiales destinadas a distintos perfiles de
+          usuarios:
+        </p>
+
+        <ul>
+          <li>
+            <span class="tarjetas-list__tipo" id="card-type-1">Tarjeta de Movilidad Integrada (MI):</span>
+            <span class="tarjetas-list__desc" id="card-desc-1">
+              Permite acceder al Metro y a otros medios de transporte de la Red MI mediante un único soporte recargable.
+            </span>
+          </li>
+
+          <li>
+            <span class="tarjetas-list__tipo" id="card-type-2">Tarjeta de cortesía:</span>
+            <span class="tarjetas-list__desc" id="card-desc-2">
+              Destinada a personas con discapacidad permanente previamente registradas, que pueden viajar sin costo.
+            </span>
+          </li>
+
+          <li>
+            <span class="tarjetas-list__tipo" id="card-type-3">Accesos preferentes:</span>
+            <span class="tarjetas-list__desc" id="card-desc-3">
+              Beneficios para adultos mayores, personas con discapacidad y menores de 5 años, con entrada sin pago en
+              los accesos habilitados.
+            </span>
+          </li>
+        </ul>
+
+        <p id="paragraph-2">
+          Las tarifas y beneficios pueden actualizarse conforme a lo establecido por las autoridades de movilidad. Para
+          información actualizada sobre descuentos, recargas y compatibilidad con otros transportes, se recomienda
+          consultar fuentes oficiales del Gobierno de la Ciudad de México.
+        </p>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- ==== SCRIPT ==== -->
+  <script>
+    // Textos para los diferentes idiomas
+    const texts = {
+      "es": {
+        "accessibility-link": "ACCESIBILIDAD",
+        "made-by": "HECHO POR",
+        "language-btn": "ES",
+        "page-title": "Tipos de tarjeta",
+        "card-types-text": "TIPOS DE TARJETA",
+        "card-types-img": "Tipos de tarjeta",
+        "fares-text": "TARIFAS",
+        "fares-img": "Tarifas",
+        "discounts-text": "BONIFICACIONES",
+        "discounts-img": "Bonificaciones",
+        "paragraph-1": "Además del viaje individual, existen títulos y modalidades especiales destinadas a distintos perfiles de usuarios:",
+        "paragraph-2": "Las tarifas y beneficios pueden actualizarse conforme a lo establecido por las autoridades de movilidad. Para información actualizada sobre descuentos, recargas y compatibilidad con otros transportes, se recomienda consultar fuentes oficiales del Gobierno de la Ciudad de México.",
+        "card-type-1": "Tarjeta de Movilidad Integrada (MI):",
+        "card-desc-1": "Permite acceder al Metro y a otros medios de transporte de la Red MI mediante un único soporte recargable.",
+        "card-type-2": "Tarjeta de cortesía:",
+        "card-desc-2": "Destinada a personas con discapacidad permanente previamente registradas, que pueden viajar sin costo.",
+        "card-type-3": "Accesos preferentes:",
+        "card-desc-3": "Beneficios para adultos mayores, personas con discapacidad y menores de 5 años, con entrada sin pago en los accesos habilitados."
+      },
+
+      "en": {
+        "accessibility-link": "ACCESSIBILITY",
+        "made-by": "MADE BY",
+        "language-btn": "EN",
+        "page-title": "Card Types",
+        "card-types-text": "CARD TYPES",
+        "card-types-img": "Card types",
+        "fares-text": "FARES",
+        "fares-img": "Fares",
+        "discounts-text": "DISCOUNTS",
+        "discounts-img": "Discounts",
+        "paragraph-1": "In addition to single trips, there are special passes and modalities designed for different user profiles:",
+        "paragraph-2": "Fares and benefits may be updated according to mobility authorities' regulations. For updated information on discounts, recharges, and compatibility with other transport systems, it's recommended to consult official sources from the Mexico City Government.",
+        "card-type-1": "Integrated Mobility Card (MI):",
+        "card-desc-1": "Allows access to the Metro and other MI Network transport systems through a single rechargeable card.",
+        "card-type-2": "Courtesy Card:",
+        "card-desc-2": "Designed for previously registered people with permanent disabilities, who can travel free of charge.",
+        "card-type-3": "Preferential Access:",
+        "card-desc-3": "Benefits for senior citizens, people with disabilities, and children under 5 years old, with free entry through enabled access points."
+      }
+    };
+
+    // Función para cambiar el idioma
+    function setLanguage(lang) {
+      // Actualizar todos los elementos con id en el objeto texts
+      for (const key in texts[lang]) {
+        const element = document.getElementById(key);
+        if (element) {
+          if (element.tagName === 'IMG') {
+            // Para imágenes, actualizar el atributo alt
+            element.alt = texts[lang][key];
+          } else {
+            // Para otros elementos, actualizar el texto
+            element.textContent = texts[lang][key];
+          }
+        }
+      }
+
+      // Actualizar el botón de idioma
+      const languageBtn = document.getElementById('language-btn');
+      if (languageBtn) {
+        languageBtn.textContent = texts[lang]['language-btn'];
+      }
+
+      // Actualizar el atributo lang del html
+      document.documentElement.lang = lang;
+
+      // Actualizar el título de la página
+      document.title = texts[lang]['page-title'];
+
+      // Guardar preferencia de idioma
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function () {
+      // Configurar elementos
+      const langWrapper = document.querySelector('.util-top__lang');
+      const langBtn = document.getElementById('language-btn');
+      const langList = document.getElementById('language-list');
+
+      // Cargar idioma guardado o español por defecto
+      const savedLang = localStorage.getItem('preferred-language') || 'es';
+      setLanguage(savedLang);
+
+      // Abrir/cerrar lista de idiomas
+      if (langBtn) {
+        langBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const isOpen = langWrapper.classList.toggle('is-open');
+          langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      // Cambiar idioma al seleccionar uno
+      document.querySelectorAll('#language-list a').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          setLanguage(lang);
+          if (langWrapper) {
+            langWrapper.classList.remove('is-open');
+          }
+          if (langBtn) {
+            langBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // Cerrar selector al hacer clic fuera
+      document.addEventListener('click', function (e) {
+        if (langWrapper && !langWrapper.contains(e.target)) {
+          langWrapper.classList.remove('is-open');
+          if (langBtn) {
+            langBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

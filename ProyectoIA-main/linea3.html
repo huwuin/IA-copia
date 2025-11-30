@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Línea 3 — Metro de Ciudad de Mexico</title> <!-- Título que aparece en la pestaña del navegador -->
+  <link rel="stylesheet" href="css/linea3.css"> <!-- Enlace al CSS: especifico de esta página -->
+  <link rel="stylesheet" href="css/index.css"> <!-- Enlace al CSS: estructura común -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ===== BARRA SUPERIOR UTILIDADES ===== -->
+  <header id="util-top" role="banner" aria-label="Barra superior utilidades">
+    <div class="util-top__inner">
+
+      <!-- Lado izquierdo: accesibilidad e idioma -->
+      <div class="util-top__left">
+        <a href="accesibilidad.html" class="util-top__link" id="accessibility-link">ACCESIBILIDAD</a> <!-- Enlace -->
+        <!-- Selector de idioma -->
+        <div class="util-top__lang">
+          <!-- Botón que muestra el idioma actual -->
+          <button class="util-top__lang-btn" id="language-btn" aria-haspopup="listbox" aria-expanded="false">ES</button>
+          <ul class="util-top__lang-list" id="language-list" rola="listbox"> <!-- Lista de idiomas alternativos -->
+            <li><a href="#" data-lang="en">ENGLISH</a></li>
+            <li><a href="#" data-lang="es">ESPAÑOL</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ==== SCRIPT ==== -->
+      <script>
+        const langWrapper = document.querySelector('.util-top__lang');
+        const langBtn = document.querySelector('.util-top__lang-btn');
+
+        // Abrir / cerrar al hacer click en el botón
+        langBtn.addEventListener('click', function (e) {
+          e.preventDefault(); // Evita que haga cosas raras si está dentro de un formulario
+
+          const isOpen = langWrapper.classList.toggle('is-open');
+          langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Cerrar si hacemos click fuera del desplegable
+        document.addEventListener('click', function (e) {
+          if (!langWrapper.contains(e.target)) {
+            langWrapper.classList.remove('is-open');
+            langBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      </script>
+
+      <!-- Lado derecho: autores y logo -->
+      <div class="util-top__right">
+        <a href="autoria.html" class="util-top__link util-top__contacto" id="made-by">HECHO POR</a> <!-- Enlace -->
+
+        <!-- Logotipo de CDMX -->
+        <a href="#" class="util-top__logo" aria-label="Ciudad de Mexico">
+          <img src="img/bandera.png" alt="Bandera CDMX"><!-- Imagen -->
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==== NAVEGACIÓN PRINCIPAL ==== -->
+  <nav id="main-nav" aria-label="Navegación principal">
+    <div class="main-nav__inner">
+      <!-- Logo Metro centrado que enlaza al inicio -->
+      <a href="index.html" class="main-nav__logo" aria-label="Ir al inicio"><!-- Enlace -->
+        <img src="img/logo.png" alt="Logo CDMX"><!-- Imagen -->
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==== CONTENIDO PRINCIPAL (dos columnas) ==== -->
+  <main class="contenedor linea--3">
+    <!-- Columna izquierda -->
+    <aside class="sidebar-linea">
+      <!-- Encabezado con número, nombre y tramo de la línea -->
+      <header class="sidebar-head">
+        <div class="line-badge l3">3</div> <!-- Número de la línea -->
+        <div>
+          <h2 class="line-title" id="line-route">Universidad<br><strong>Juarez</strong></h2>
+          <!-- Recorrido de la línea -->
+          <p class="line-sub" id="line-name">LÍNEA 3</p> <!-- Nombre corto -->
+        </div>
+      </header>
+
+      <!-- Pestaña (si le das, te lleva a ver las estaciones) -->
+      <nav class="tabs-vert">
+        <a class="tab active" href="#" id="stations-tab">ESTACIONES</a>
+      </nav>
+
+      <!-- Sección con enlace a las otras líneas -->
+      <section class="otras">
+        <h3 id="other-lines-title">Otras líneas</h3>
+        <div class="badge-grid">
+          <a class="badge l1" href="linea1.html" aria-label="Abrir Linea 1">1</a><!-- Enlace -->
+          <a class="badge l3" href="linea3.html" aria-label="Abrir Linea 3">3</a><!-- Enlace -->
+          <a class="badge l7" href="linea7.html" aria-label="Abrir Linea 7">7</a><!-- Enlace -->
+          <a class="badge l9" href="linea9.html" aria-label="Abrir Linea 9">9</a><!-- Enlace -->
+          <a class="badge l12" href="linea12.html" aria-label="Abrir Linea 12">12</a><!-- Enlace -->
+        </div>
+      </section>
+    </aside>
+
+    <!-- Columna derecha -->
+    <section class="linea">
+      <!-- Lista de estaciones con su correspondiente información-->
+      <ol class="line-map linea-3">
+        <li class="stop" data-nombre="universidad" data-accesible="Si" data-zona="No" data-description="">Universidad
+        </li>
+        <li class="stop" data-nombre="copilco" data-accesible="Si" data-zona="No" data-description="">Copilco</li>
+        <li class="stop" data-nombre="m.a. de quevedo" data-accesible="No" data-zona="No" data-description="">M. A. De
+          Quevedo</li>
+        <li class="stop" data-nombre="viveros" data-accesible="No" data-zona="No" data-description="">Viveros</li>
+        <li class="stop" data-nombre="coyoacan" data-accesible="No" data-zona="Si" data-description="">Coyoacan</li>
+        <li class="stop" data-nombre="zapata" data-accesible="Si" data-zona="Si" data-description="">Zapata</li>
+        <li class="stop" data-nombre="division-del-norte" data-accesible="No" data-zona="Si" data-description="">
+          Division del Norte</li>
+        <li class="stop" data-nombre="eugenia" data-accesible="No" data-zona="Si" data-description="">Eugenia</li>
+        <li class="stop" data-nombre="etiopia" data-accesible="Si" data-zona="Si" data-description="">Etiopia</li>
+        <li class="stop" data-nombre="centro-medico" data-accesible="Si" data-zona="Si" data-description="">Centro
+          Medico</li>
+        <li class="stop" data-nombre="hospital-general" data-accesible="Si" data-zona="Si" data-description="">Hospital
+          General</li>
+        <li class="stop" data-nombre="ninos-heroes" data-accesible="No" data-zona="No" data-description="">Niños Heroes
+        </li>
+        <li class="stop" data-nombre="balderas" data-accesible="Si" data-zona="Si" data-description="">Balderas</li>
+        <li class="stop" data-nombre="juarez" data-accesible="Si" data-zona="Si" data-description="">Juarez</li>
+      </ol>
+
+      <!-- Panel de detalle de la estación que inicialmente está oculto -->
+      <section id="station-detail" class="station-detail station-detail--hidden">
+        <!-- Campos sobre los que habrá información -->
+        <h2 id="detail-nombre">Nombre de la estación</h2>
+        <p><strong id="accessible-label">Estación accesible:</strong> <span id="detail-accesible">–</span></p>
+        <p><strong id="zone-label">Zona de biciestacionamiento:</strong> <span id="detail-zona">–</span></p>
+        <p id="detail-descripcion" class="station-detail__extra"></p>
+      </section>
+    </section>
+  </main>
+
+  <!-- ==== SCRIPT ==== -->
+  <script>
+    // Textos para los diferentes idiomas
+    const texts = {
+      "es": {
+        "accessibility-link": "ACCESIBILIDAD",
+        "made-by": "HECHO POR",
+        "language-btn": "ES",
+        "line-route": "Universidad<br><strong>Juarez</strong>",
+        "line-name": "LÍNEA 3",
+        "stations-tab": "ESTACIONES",
+        "other-lines-title": "Otras líneas",
+        "accessible-label": "Estación accesible:",
+        "zone-label": "Zona de biciestacionamiento:",
+        "info-unavailable": "Información no disponible",
+        "yes": "Sí",
+        "no": "No"
+      },
+
+      "en": {
+        "accessibility-link": "ACCESSIBILITY",
+        "made-by": "MADE BY",
+        "language-btn": "EN",
+        "line-route": "University<br><strong>Juarez</strong>",
+        "line-name": "LINE 3",
+        "stations-tab": "STATIONS",
+        "other-lines-title": "Other lines",
+        "accessible-label": "Accessible station:",
+        "zone-label": "Bicycle parking area:",
+        "info-unavailable": "Information not available",
+        "yes": "Yes",
+        "no": "No"
+      }
+    };
+
+    // Función para traducir valores Sí/No
+    function translateYesNo(value, lang) {
+      if (value === "Si") return texts[lang]["yes"];
+      if (value === "No") return texts[lang]["no"];
+      return value;
+    }
+
+    // Función para cambiar el idioma
+    function setLanguage(lang) {
+      for (const key in texts[lang]) {
+        const element = document.getElementById(key);
+        if (element) {
+          if (key === 'line-route') {
+            element.innerHTML = texts[lang][key];
+          } else {
+            element.innerText = texts[lang][key];
+          }
+        }
+      }
+
+      document.getElementById('language-btn').innerText = texts[lang]['language-btn'];
+
+      updateStationDescriptions(lang);
+      updateStationDetail(lang);
+
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // Función para actualizar las descripciones de las estaciones
+    function updateStationDescriptions(lang) {
+      // Las descripciones ahora están vacías, no hay nada que actualizar
+    }
+
+    // Función para actualizar el panel de detalle si está visible
+    function updateStationDetail(lang) {
+      const panel = document.getElementById('station-detail');
+      if (!panel.classList.contains('station-detail--hidden')) {
+        const translations = document.getElementById('translations');
+        const selectedStop = document.querySelector('.stop--selected');
+
+        if (selectedStop) {
+          const accessibleLabel = document.getElementById('accessible-label');
+          const zoneLabel = document.getElementById('zone-label');
+
+          if (accessibleLabel) accessibleLabel.innerText = texts[lang]['accessible-label'];
+          if (zoneLabel) zoneLabel.innerText = texts[lang]['zone-label'];
+
+          // Actualizar los valores Sí/No en el panel visible
+          const accElement = document.getElementById('detail-accesible');
+          if (accElement) {
+            accElement.innerText = translateYesNo(accElement.innerText, lang);
+          }
+
+          const zonaElement = document.getElementById('detail-zona');
+          if (zonaElement) {
+            zonaElement.innerText = translateYesNo(zonaElement.innerText, lang);
+          }
+
+          const descElement = document.getElementById('detail-descripcion');
+          if (descElement) {
+            descElement.innerText = ""; // Siempre vacío
+          }
+        }
+      }
+    }
+
+    // Inicializar con el idioma guardado o español por defecto
+    document.addEventListener('DOMContentLoaded', function () {
+      const savedLang = localStorage.getItem('preferred-language') || 'es';
+      setLanguage(savedLang);
+
+      document.getElementById('language-btn').addEventListener('click', function () {
+        const list = document.getElementById('language-list');
+        list.classList.toggle('show');
+      });
+
+      document.querySelectorAll('#language-list a').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          setLanguage(lang);
+          document.getElementById('language-list').classList.remove('show');
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.util-top__lang')) {
+          document.getElementById('language-list').classList.remove('show');
+        }
+      });
+    });
+
+    // Función que muestra el panel de detalle para una parada concreta
+    function mostrarDetalle(stopLi) {
+      document.querySelectorAll(".stop").forEach(s => s.classList.remove("stop--selected"));
+      stopLi.classList.add("stop--selected");
+
+      const nombreVisible = stopLi.textContent.trim();
+      const accesible = stopLi.dataset.accesible || "Información no disponible";
+      const zona = stopLi.dataset.zona || "—";
+
+      // Obtener el idioma actual para traducir Sí/No
+      const currentLang = localStorage.getItem('preferred-language') || 'es';
+
+      const nombreEl = document.getElementById("detail-nombre");
+      if (nombreEl) nombreEl.textContent = nombreVisible;
+
+      const accEl = document.getElementById("detail-accesible");
+      if (accEl) accEl.textContent = translateYesNo(accesible, currentLang);
+
+      const zonaEl = document.getElementById("detail-zona");
+      if (zonaEl) zonaEl.textContent = translateYesNo(zona, currentLang);
+
+      const descEl = document.getElementById("detail-descripcion");
+      if (descEl) descEl.textContent = ""; // Siempre vacío
+
+      const panel = document.getElementById("station-detail");
+      if (panel) {
+        panel.classList.remove("station-detail--hidden");
+        stopLi.after(panel);
+      }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const estacionParam = params.get("estacion");
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const stops = document.querySelectorAll(".stop");
+
+      stops.forEach(li => {
+        li.addEventListener("click", () => mostrarDetalle(li));
+      });
+
+      if (estacionParam) {
+        let encontrada = null;
+
+        stops.forEach(li => {
+          const nombre = (li.dataset.nombre || li.textContent).trim().toLowerCase();
+          if (nombre === estacionParam.toLowerCase()) {
+            encontrada = li;
+          }
+        });
+
+        if (encontrada) {
+          mostrarDetalle(encontrada);
+          encontrada.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

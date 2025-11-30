@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autoria</title> <!-- Título que aparece en la pestaña del navegador -->
+  <link rel="stylesheet" href="css/autoria.css"> <!-- Enlace al CSS: da el estilo a la página -->
+  <link rel="stylesheet" href="css/index.css"> <!-- Enlace al CSS: da el estilo a la página -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- ===== BARRA SUPERIOR UTILIDADES ===== -->
+  <header id="util-top" role="banner" aria-label="Barra superior utilidades">
+    <div class="util-top__inner">
+
+      <!-- Lado izquierdo: accesibilidad e idioma -->
+      <div class="util-top__left">
+        <a href="accesibilidad.html" class="util-top__link" id="accessibility-link">ACCESIBILIDAD</a> <!-- Enlace -->
+        <!-- Selector de idioma -->
+        <div class="util-top__lang">
+          <!-- Botón que muestra el idioma actual -->
+          <button class="util-top__lang-btn" id="language-btn" aria-haspopup="listbox" aria-expanded="false">ES</button>
+          <ul class="util-top__lang-list" id="language-list" role="listbox"> <!-- Lista de idiomas alternativos -->
+            <li><a href="#" data-lang="en">ENGLISH</a></li>
+            <li><a href="#" data-lang="es">ESPAÑOL</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lado derecho: autores y logo -->
+      <div class="util-top__right">
+        <a href="autoria.html" class="util-top__link util-top__contacto" id="made-by">HECHO POR</a> <!-- Enlace -->
+
+        <!-- Logotipo-->
+        <a href="#" class="util-top__logo" aria-label="Ciudad de Mexico">
+          <img src="img/bandera.png" alt="Bandera CDMX">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==== NAVEGACIÓN PRINCIPAL ==== -->
+  <nav id="main-nav" aria-label="Navegación principal">
+    <div class="main-nav__inner">
+      <!-- Logo Metro centrado que enlaza al inicio -->
+      <a href="index.html" class="main-nav__logo" aria-label="Ir al inicio">
+        <img src="img/logo.png" alt="Logo CDMX">
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==== CONTENIDO ==== -->
+  <main class="autoria-layout">
+    <h1 class="autoria-title" id="page-title">Autoría del proyecto</h1> <!-- Título -->
+    <!-- Caja que contiene las tarjetas de autoría -->
+    <section class="autoria-card">
+      <!-- Grid que coloca los autores en filas y columnas -->
+      <div class="autoria-grid">
+
+        <!-- Autor 1 -->
+        <article class="autoria-item">
+          <img src="img/autor1.jpg" alt="Nombre Apellidos 1" class="autoria-avatar" id="author-1-img"><!-- Imagen -->
+          <h2 class="autoria-nombre" id="author-1-name">Clara Laguna Luquero</h2>
+          <p class="autoria-rol" id="author-1-role">Tech lead</p>
+        </article>
+
+        <!-- Autor 2 -->
+        <article class="autoria-item">
+          <img src="img/autor2.jpg" alt="Nombre Apellidos 2" class="autoria-avatar" id="author-2-img"><!-- Imagen -->
+          <h2 class="autoria-nombre" id="author-2-name">Carmen Caño Castrodeza</h2>
+          <p class="autoria-rol" id="author-2-role">Diseñadora gráfica</p>
+        </article>
+
+        <!-- Autor 3 -->
+        <article class="autoria-item">
+          <img src="img/autor3.jpeg" alt="Nombre Apellidos 3" class="autoria-avatar" id="author-3-img"><!-- Imagen -->
+          <h2 class="autoria-nombre" id="author-3-name">Hugo Royuela Rodriguez</h2>
+          <p class="autoria-rol" id="author-3-role">Ingeniero de vías</p>
+        </article>
+
+        <!-- Autor 4 -->
+        <article class="autoria-item">
+          <img src="img/autor4.jpg" alt="Nombre Apellidos 4" class="autoria-avatar" id="author-4-img"><!-- Imagen -->
+          <h2 class="autoria-nombre" id="author-4-name">Ignacio del Rio Gómez</h2>
+          <p class="autoria-rol" id="author-4-role">Programador principal</p>
+        </article>
+
+        <!-- Autor 5 -->
+        <article class="autoria-item">
+          <img src="img/autor5.jpg" alt="Nombre Apellidos 5" class="autoria-avatar" id="author-5-img"><!-- Imagen -->
+          <h2 class="autoria-nombre" id="author-5-name">Valeria Seva García</h2>
+          <p class="autoria-rol" id="author-5-role">Analista topográfico y redactora principal</p>
+        </article>
+
+        <!-- Autor 6 -->
+        <article class="autoria-item">
+          <img src="img/autor6.jpg" alt="Nombre Apellidos 6" class="autoria-avatar" id="author-6-img"><!-- Imagen -->
+          <h2 class="autoria-nombre" id="author-6-name">Paula Seva García</h2>
+          <p class="autoria-rol" id="author-6-role">Relaciones internacionales</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==== SCRIPT ==== -->
+  <script>
+    // Textos para los diferentes idiomas
+    const texts = {
+      "es": {
+        // Título de la página
+        "page-title": "Autoría del proyecto",
+
+        // Barra superior
+        "accessibility-link": "ACCESIBILIDAD",
+        "made-by": "HECHO POR",
+        "language-btn": "ES",
+
+        // Autores - Nombres (se mantienen igual en ambos idiomas)
+        "author-1-name": "Clara Laguna Luquero",
+        "author-2-name": "Carmen Caño Castrodeza",
+        "author-3-name": "Hugo Royuela Rodriguez",
+        "author-4-name": "Ignacio del Rio Gómez",
+        "author-5-name": "Valeria Seva García",
+        "author-6-name": "Paula Seva García",
+
+        // Autores - Descripciones de imágenes
+        "author-1-img": "Clara Laguna Luquero",
+        "author-2-img": "Carmen Caño Castrodeza",
+        "author-3-img": "Hugo Royuela Rodriguez",
+        "author-4-img": "Ignacio del Rio Gómez",
+        "author-5-img": "Valeria Seva García",
+        "author-6-img": "Paula Seva García",
+
+        // Roles de los autores
+        "author-1-role": "Tech lead",
+        "author-2-role": "Diseñadora gráfica",
+        "author-3-role": "Ingeniero de vías",
+        "author-4-role": "Programador principal",
+        "author-5-role": "Analista topográfico y redactora principal",
+        "author-6-role": "Relaciones internacionales"
+      },
+
+      "en": {
+        // Page title
+        "page-title": "Project Authorship",
+
+        // Top bar
+        "accessibility-link": "ACCESSIBILITY",
+        "made-by": "MADE BY",
+        "language-btn": "EN",
+
+        // Authors - Names (remain the same in both languages)
+        "author-1-name": "Clara Laguna Luquero",
+        "author-2-name": "Carmen Caño Castrodeza",
+        "author-3-name": "Hugo Royuela Rodriguez",
+        "author-4-name": "Ignacio del Rio Gómez",
+        "author-5-name": "Valeria Seva García",
+        "author-6-name": "Paula Seva García",
+
+        // Authors - Image descriptions
+        "author-1-img": "Clara Laguna Luquero",
+        "author-2-img": "Carmen Caño Castrodeza",
+        "author-3-img": "Hugo Royuela Rodriguez",
+        "author-4-img": "Ignacio del Rio Gómez",
+        "author-5-img": "Valeria Seva García",
+        "author-6-img": "Paula Seva García",
+
+        // Authors roles
+        "author-1-role": "Tech Lead",
+        "author-2-role": "Graphic Designer",
+        "author-3-role": "Railway Engineer",
+        "author-4-role": "Main Programmer",
+        "author-5-role": "Topographic Analyst and Main Writer",
+        "author-6-role": "International Relations"
+      }
+    };
+
+    // Función para cambiar el idioma
+    function setLanguage(lang) {
+      // Actualizar todos los elementos con id en el objeto texts
+      for (const key in texts[lang]) {
+        const element = document.getElementById(key);
+        if (element) {
+          if (element.tagName === 'IMG') {
+            // Para imágenes, actualizar el atributo alt
+            element.alt = texts[lang][key];
+          } else {
+            // Para otros elementos, actualizar el texto
+            element.textContent = texts[lang][key];
+          }
+        }
+      }
+
+      // Actualizar el botón de idioma
+      document.getElementById('language-btn').textContent = texts[lang]['language-btn'];
+
+      // Actualizar el atributo lang del html
+      document.documentElement.lang = lang;
+
+      // Actualizar el título de la página
+      document.title = texts[lang]['page-title'];
+
+      // Guardar preferencia de idioma
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function () {
+      // Configurar elementos
+      const langWrapper = document.querySelector('.util-top__lang');
+      const langBtn = document.getElementById('language-btn');
+      const langList = document.getElementById('language-list');
+
+      // Cargar idioma guardado o español por defecto
+      const savedLang = localStorage.getItem('preferred-language') || 'es';
+      setLanguage(savedLang);
+
+      // Abrir/cerrar lista de idiomas
+      langBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = langWrapper.classList.toggle('is-open');
+        langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Cambiar idioma al seleccionar uno
+      document.querySelectorAll('#language-list a').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          setLanguage(lang);
+          langWrapper.classList.remove('is-open');
+          langBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Cerrar selector al hacer clic fuera
+      document.addEventListener('click', function (e) {
+        if (!langWrapper.contains(e.target)) {
+          langWrapper.classList.remove('is-open');
+          langBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

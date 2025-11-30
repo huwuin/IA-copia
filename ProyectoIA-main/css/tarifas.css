@@ -1,0 +1,180 @@
+/* Distribución general de la página */
+.tarifas-layout {
+  max-width: 1120px; /* Ancho máximo */
+  margin: 2.5rem auto 3rem auto; /* Centrado horizontal con margen superior e inferior */
+  padding: 0 1.5rem;
+}
+
+/* Pestañas (Tipo tarjetas, Tarifas, Bonificaciones) */
+.tarifas-tabs {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las pestañas bajen de línea si no caben */
+  gap: 1.5rem; /* Espacio entre pestañas */
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.tarifas-tab {
+  display: flex;
+  flex-direction: column; /* Dirección de los elementos en columna */
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  max-width: 100%;
+  padding: 1.4rem 1rem 1.1rem; /* Espaciado interno */
+  background: #F36C21;          
+  color: #fff;
+  text-decoration: none; /* Sin decoración*/
+  border-radius: 6px; /* Bordes redondeados */
+  position: relative; /* Necesario para ::after de pestaña activa */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* Sombreado*/
+  transition: transform 0.15s ease, box-shadow 0.15s ease; /* Transición al pasar el ratón */
+}
+
+/*Imagen dentro de la pestaña*/
+.tarifas-tab__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%; /* Forma circular*/
+  overflow: hidden; /* Recorta todo lo que está fuera del círculo */
+  margin: 0 0 0.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none; /* Quita el fondo blanco */
+}
+
+/* Imagen dentro del círculo */
+.tarifas-tab__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Rellena bien el círculo sin deformarse */
+}
+
+/* Texto de la pestaña */
+.tarifas-tab__text {
+  font-weight: 700;
+  letter-spacing: 0.08em; /* Espaciado entre letras */
+  font-size: 0.9rem;
+}
+
+/* Efecto al pasar el ratón*/
+.tarifas-tab:hover {
+  transform: translateY(-3px); /* Levanta la pestaña (elevación) */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18); /* Sombreado */
+  background: #D85F1D;
+}
+
+/* Pestaña activa */
+.tarifas-tab--active::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -6px 0;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 4px;
+  background: #2F5FB3;  /* Barra para indicar en que pestaña estamos */
+  border-radius: 0 0 4px 4px; /* Bordes redondeados */
+}
+
+/* ===== CONTENIDO: TÍTULO + CAJA BLANCA (para meter información) ===== */
+.tarifas-content {
+  margin: 1rem 0 0 0;
+}
+
+.tarifas-title {
+  font-size: 2.4rem;
+  margin: 0.6rem 0 2rem 0; /* Pequeño margen arriba, grande abajo*/
+  color: #1f4f86;
+}
+
+/* Caja bdonde está el contenido/información */
+.tarifas-box {
+  background: #fff;
+  padding: 1.6rem 2rem;
+  border-radius: 12px;
+  border: 1px solid #d9e1ec;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04); /* Sombreado */
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.tarifas-box p {
+  margin: 0 0 1rem; /* Separación entre párrafos */
+}
+
+/* Logos dentro de la caja */
+.tarifas-logos {
+  margin: 1.2rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Tamaño de los logos */
+.tarifas-logos img {
+  max-height: 44px;
+  width: 44px; /* Para mantener una proporción cuadrada*/
+}
+
+/* Lista de tipos de tarjeta (dentro de la caja) */
+.tarjetas-list {
+  list-style: none; /* Sin puntos en la lista*/
+  margin: 1.2rem 0 1.4rem 0;
+  padding: 0;
+}
+
+.tarjetas-list li {
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) 1fr; /* columna primera fija (tipo) + columna segunda flexible (descripción) */
+  column-gap: 1.5rem;
+  row-gap: 0.25rem;
+  padding: 0.6rem 0;
+  border-top: 1px dashed #d0d7e2; /* Línea divisoria */
+}
+
+.tarjetas-list li:first-child {
+  border-top: none; /* Quita la linea del primer elemento*/
+}
+
+/* Estilo del tipo de tarjeta */
+.tarjetas-list__tipo {
+  font-weight: 600;
+  color: #1f4f86; 
+}
+
+/*Estilo descripción de la tarjeta*/
+.tarjetas-list__desc {
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+/* ===== RESPONSIVE ===== */
+/* En pantallas pequeñas, que pase a una sola columna */
+@media (max-width: 720px) {
+  .tarjetas-list li {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .tarifas-tabs {
+    justify-content: center;
+  }
+
+  .tarifas-tab {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .tarifas-title {
+    font-size: 2rem;
+  }
+
+  .tarifas-box {
+    padding: 1.6rem 1.4rem;
+  }
+}

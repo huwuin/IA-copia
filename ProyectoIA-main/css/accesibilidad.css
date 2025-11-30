@@ -1,0 +1,77 @@
+/* Contenedor que centra todo el contenido de la página */
+.contenedor-accesibilidad {
+  max-width: 1120px;
+  margin: 2.5rem auto 3rem; /* Centrado horizontal + márgenes superior e inferior */
+  padding: 0 1.5rem;
+}
+
+/* Fila principal: imagen + texto */
+.accesibilidad-row {
+  display: flex;
+  align-items: flex-start; /* Alineación superior */
+  gap: 2.5rem; /* Espacio entre imagen y texto */
+  margin-bottom: 3rem;
+}
+
+/* Imagen */
+.accesibilidad-img {
+  width: 460px;
+  max-width: 100%;
+  border-radius: 16px;
+  flex-shrink: 0; /* Evita que se encoja cuando el texto crece*/
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); /* Sombreado*/
+}
+
+/* Contenedor del texto principal */
+.accesibilidad-texto {
+  flex: 1; /* Ocupa el espacio restante */
+  text-align: justify;
+}
+
+/* Bloque inferior de mejoras */
+.accesibilidad-bloque-secundario {
+  margin-top: 1rem;
+}
+
+/* Título principal*/
+.accesibilidad-texto h1 {
+  font-family: "Playfair Display", serif; /* Fuente importada*/
+  font-size: 2.2rem;
+  margin-top: 0.2rem;
+  color: #1f4f86;
+}
+
+/* Título secundario */
+.accesibilidad-bloque-secundario h2 {
+  font-family: "Playfair Display", serif; /* Fuente importada*/
+  font-size: 2rem;
+  color: #1f4f86;
+  margin-bottom: 1rem;
+}
+
+/* Párrafo  del bloque inferior*/
+.accesibilidad-bloque-secundario p {
+  font-size: 1.05rem;
+  line-height: 1.7; /* Mejor legibilidad*/
+  color: #000000;
+  text-align: justify;
+}
+
+/* Lista de servicios accesibles */
+.accesibilidad-texto ul {
+  margin-top: 0.75rem;
+  padding-left: 1.3rem; /* Sangría para los puntos de las listas*/
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .accesibilidad-row {
+    flex-direction: column; /* Imagen encima y texto debajo*/
+    align-items: flex-start;
+  }
+
+  .accesibilidad-img {
+    width: 100%; /* Imagen adaptada al ancho del móvil*/
+  }
+}

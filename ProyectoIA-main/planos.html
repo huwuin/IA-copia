@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planos</title> <!-- Título que aparece en la pestaña del navegador -->
+  <link rel="stylesheet" href="css/planos.css"> <!-- Enlace al CSS: da el estilo a la página -->
+  <link rel="stylesheet" href="css/index.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- ===== BARRA SUPERIOR UTILIDADES ===== -->
+  <header id="util-top" role="banner" aria-label="Barra superior utilidades">
+    <div class="util-top__inner">
+
+      <!-- Lado izquierdo: accesibilidad e idioma -->
+      <div class="util-top__left">
+        <a href="accesibilidad.html" class="util-top__link" id="accessibility-link">ACCESIBILIDAD</a> <!-- Enlace -->
+        <!-- Selector de idioma -->
+        <div class="util-top__lang">
+          <button class="util-top__lang-btn" id="language-btn" aria-haspopup="listbox" aria-expanded="false">ES</button>
+          <!-- Botón que muestra el idioma actual -->
+          <ul class="util-top__lang-list" id="language-list" role="listbox"> <!-- Lista de idiomas alternativos -->
+            <li><a href="#" data-lang="en">ENGLISH</a></li>
+            <li><a href="#" data-lang="es">ESPAÑOL</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ==== SCRIPT ==== -->
+      <script>
+        const langWrapper = document.querySelector('.util-top__lang');
+        const langBtn = document.querySelector('.util-top__lang-btn');
+
+        // Abrir / cerrar al hacer click en el botón
+        langBtn.addEventListener('click', function (e) {
+          e.preventDefault(); // evita que haga cosas raras si está dentro de un formulario
+
+          const isOpen = langWrapper.classList.toggle('is-open');
+          langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Cerrar si hacemos click fuera del desplegable
+        document.addEventListener('click', function (e) {
+          if (!langWrapper.contains(e.target)) {
+            langWrapper.classList.remove('is-open');
+            langBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      </script>
+
+      <!-- Lado derecho: autores y logo -->
+      <div class="util-top__right">
+        <a href="autoria.html" class="util-top__link util-top__contacto" id="made-by">HECHO POR</a> <!-- Enlace -->
+
+        <!-- Logotipo-->
+        <a href="#" class="util-top__logo" aria-label="Ciudad de Mexico">
+          <img src="img/bandera.png" alt="Bandera CDMX"><!-- Imagen -->
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==== NAVEGACIÓN PRINCIPAL ==== -->
+  <nav id="main-nav" aria-label="Navegación principal">
+    <div class="main-nav__inner">
+      <!-- Logo Metro centrado que enlaza al inicio -->
+      <a href="index.html" class="main-nav__logo" aria-label="Ir al inicio"><!-- Enlace -->
+        <img src="img/logo.png" alt="Logo CDMX"><!-- Imagen -->
+      </a>
+    </div>
+  </nav>
+
+  <main class="org-planos">
+    <!-- Título principal de la página -->
+    <h1 class="org-planos-title" id="page-title">Planos</h1>
+    <section class="docs-grid">
+
+      <!-- Plano 1: Red de Metro de CDMX -->
+      <a class="doc-card" href="docs/metro-CDMX-plano.pdf" target="_blank">
+        <!-- Miniatura del documento -->
+        <div class="doc-card__thumb">
+          <img src="img/Ruta.png" alt="Plano esquemático del metro" id="metro-schematic-img"><!-- Documento -->
+        </div>
+        <!-- Cuerpo: icono + título -->
+        <div class="doc-card__body">
+          <span class="doc-card__icon">📄</span>
+          <p class="doc-card__title" id="metro-schematic-title">Plano esquemático de la red de Metro de Ciudad de
+            México.</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta 2: Ecobici -->
+      <a class="doc-card" href="docs/ecobici.pdf" target="_blank">
+        <!-- Miniatura del documento -->
+        <div class="doc-card__thumb">
+          <img src="img/mapaEcobici.png" alt="Plano ecobici" id="ecobici-img"><!-- Documento -->
+        </div>
+        <!-- Cuerpo: icono + título -->
+        <div class="doc-card__body">
+          <span class="doc-card__icon">📄</span>
+          <p class="doc-card__title" id="ecobici-title">Plano ecobici.</p>
+        </div>
+      </a>
+
+      <!-- Tarjeta 3: Metro Ligero -->
+      <a class="doc-card" href="docs/MetroLigero.pdf" target="_blank">
+        <!-- Miniatura del documento -->
+        <div class="doc-card__thumb">
+          <img src="img/MapaMetroLigero.png" alt="Plano de metroligero" id="metroligero-img"><!-- Documento -->
+        </div>
+        <!-- Cuerpo: icono + título -->
+        <div class="doc-card__body">
+          <span class="doc-card__icon">📄</span>
+          <p class="doc-card__title" id="metroligero-title">Plano del metroligero.</p>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <!-- ==== SCRIPT ==== -->
+  <script>
+    // Textos para los diferentes idiomas
+    const texts = {
+      "es": {
+        "accessibility-link": "ACCESIBILIDAD",
+        "made-by": "HECHO POR",
+        "language-btn": "ES",
+        "page-title": "Planos",
+        "metro-schematic-title": "Plano esquemático de la red de Metro de Ciudad de México.",
+        "metro-schematic-img": "Plano esquemático del metro",
+        "ecobici-title": "Plano ecobici.",
+        "ecobici-img": "Plano ecobici",
+        "metroligero-title": "Plano del metroligero.",
+        "metroligero-img": "Plano de metroligero"
+      },
+
+      "en": {
+        "accessibility-link": "ACCESSIBILITY",
+        "made-by": "MADE BY",
+        "language-btn": "EN",
+        "page-title": "Maps",
+        "metro-schematic-title": "Schematic map of the Mexico City Metro network.",
+        "metro-schematic-img": "Schematic metro map",
+        "ecobici-title": "Ecobici map.",
+        "ecobici-img": "Ecobici map",
+        "metroligero-title": "Light rail map.",
+        "metroligero-img": "Light rail map"
+      }
+    };
+
+    // Función para cambiar el idioma
+    function setLanguage(lang) {
+      // Actualizar todos los elementos con id en el objeto texts
+      for (const key in texts[lang]) {
+        const element = document.getElementById(key);
+        if (element) {
+          if (element.tagName === 'IMG') {
+            // Para imágenes, actualizar el atributo alt
+            element.alt = texts[lang][key];
+          } else {
+            // Para otros elementos, actualizar el texto
+            element.innerText = texts[lang][key];
+          }
+        }
+      }
+
+      // Actualizar el botón de idioma
+      document.getElementById('language-btn').innerText = texts[lang]['language-btn'];
+
+      // Actualizar el atributo lang del html
+      document.documentElement.lang = lang;
+
+      // Guardar preferencia de idioma
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // Inicializar con el idioma guardado o español por defecto
+    document.addEventListener('DOMContentLoaded', function () {
+      const savedLang = localStorage.getItem('preferred-language') || 'es';
+      setLanguage(savedLang);
+
+      // Configurar el selector de idioma
+      const langBtn = document.getElementById('language-btn');
+      const langList = document.getElementById('language-list');
+
+      // Abrir/cerrar lista de idiomas
+      langBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = langList.classList.toggle('show');
+        langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Cambiar idioma al seleccionar uno
+      document.querySelectorAll('#language-list a').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          setLanguage(lang);
+          langList.classList.remove('show');
+          langBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Cerrar selector al hacer clic fuera
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.util-top__lang')) {
+          langList.classList.remove('show');
+          langBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

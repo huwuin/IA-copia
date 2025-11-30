@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accesibilidad</title> <!-- Título que aparece en la pestaña del navegador -->
+  <link rel="stylesheet" href="css/accesibilidad.css"> <!-- Enlace al CSS: da el estilo a la página -->
+  <link rel="stylesheet" href="css/index.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- ===== BARRA SUPERIOR UTILIDADES ===== -->
+  <header id="util-top" role="banner" aria-label="Barra superior utilidades">
+    <div class="util-top__inner">
+
+      <!-- Lado izquierdo: accesibilidad e idioma -->
+      <div class="util-top__left">
+        <a href="#" class="util-top__link" id="accessibility-link">ACCESIBILIDAD</a> <!-- Enlace -->
+        <!-- Selector de idioma -->
+        <div class="util-top__lang">
+          <!-- Botón que muestra el idioma actual -->
+          <button class="util-top__lang-btn" id="language-btn" aria-haspopup="listbox" aria-expanded="false">ES</button>
+          <ul class="util-top__lang-list" id="language-list" role="listbox"> <!-- Lista de idiomas alternativos -->
+            <li><a href="#" data-lang="en">ENGLISH</a></li>
+            <li><a href="#" data-lang="es">ESPAÑOL</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lado derecho: autores y logo -->
+      <div class="util-top__right">
+        <a href="autoria.html" class="util-top__link util-top__contacto" id="made-by">HECHO POR</a> <!-- Enlace -->
+
+        <!-- Logotipo-->
+        <a href="#" class="util-top__logo" aria-label="Ciudad de Mexico">
+          <img src="img/bandera.png" alt="Bandera CDMX">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==== NAVEGACIÓN PRINCIPAL ==== -->
+  <nav id="main-nav" aria-label="Navegación principal">
+    <div class="main-nav__inner">
+      <!-- Logo Metro centrado que enlaza al inicio -->
+      <a href="index.html" class="main-nav__logo" aria-label="Ir al inicio">
+        <img src="img/logo.png" alt="Logo CDMX">
+      </a>
+    </div>
+  </nav>
+
+  <!-- ==== CONTENIDO ==== -->
+  <main class="contenedor-accesibilidad">
+    <!-- Bloque con imagen + texto principal -->
+    <section class="accesibilidad-row">
+      <img src="img/acc.jpg" alt="" class="accesibilidad-img" id="accessibility-img"> <!-- Imagen -->
+
+      <div class="accesibilidad-texto">
+        <h1 id="page-title">Accesibilidad</h1> <!-- Título -->
+        <p id="main-paragraph">Metro de Ciudad de Mexico tiene como uno de sus objetivos principales
+          facilitar la autonomía integral de personas con discapacidad de forma
+          que todos los usuarios puedan viajar en igualdad de condiciones. Por ello ofrecemos entre otros, los
+          siguientes servicios de marcados:</p>
+        <!-- Lista de servicios de accesibilidad -->
+        <ul>
+          <li id="service-1">Biciestacionamiento</li>
+          <li id="service-2">Accesibilidad universal: ascensores, rampas, pasamanos, pavimento podotáctil</li>
+          <li id="service-3">Atención a personas con discapacidad visual y auditiva</li>
+          <li id="service-4">Señalización en braille</li>
+          <li id="service-5">Plazas reservadas en andenes y trenes</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Segundo bloque de contenido -->
+    <section class="accesibilidad-bloque-secundario">
+      <h2 id="improvements-title">Mejoras a realizar en los próximos años</h2>
+      <p id="improvements-paragraph">En los próximos años, el Metro de la Ciudad de México tiene previsto seguir
+        mejorando la experiencia de viaje de todos sus usuarios,
+        especialmente de aquellas personas con discapacidad o movilidad reducida. Se trabajará en la ampliación de
+        accesos accesibles en más estaciones,
+        en la reducción de barreras arquitectónicas en zonas de correspondencia y en la mejora de los tiempos de espera
+        mediante una planificación más
+        eficiente del servicio. Asimismo, se reforzará la iluminación, la señalización y la información en andenes y
+        pasillos para facilitar la orientación
+        y hacer los traslados más claros y seguros, de modo que cada trayecto pueda realizarse de forma más cómoda,
+        rápida e inclusiva.</p>
+    </section>
+  </main>
+
+  <!-- ==== SCRIPT ==== -->
+  <script>
+    // Textos para los diferentes idiomas
+    const texts = {
+      "es": {
+        // Título de la página
+        "page-title": "Accesibilidad",
+
+        // Barra superior
+        "accessibility-link": "ACCESIBILIDAD",
+        "made-by": "HECHO POR",
+        "language-btn": "ES",
+
+        // Imagen
+        "accessibility-img": "Accesibilidad en el Metro",
+
+        // Contenido principal
+        "main-paragraph": "Metro de Ciudad de Mexico tiene como uno de sus objetivos principales facilitar la autonomía integral de personas con discapacidad de forma que todos los usuarios puedan viajar en igualdad de condiciones. Por ello ofrecemos entre otros, los siguientes servicios de marcados:",
+
+        // Lista de servicios
+        "service-1": "Biciestacionamiento",
+        "service-2": "Accesibilidad universal: ascensores, rampas, pasamanos, pavimento podotáctil",
+        "service-3": "Atención a personas con discapacidad visual y auditiva",
+        "service-4": "Señalización en braille",
+        "service-5": "Plazas reservadas en andenes y trenes",
+
+        // Bloque secundario
+        "improvements-title": "Mejoras a realizar en los próximos años",
+        "improvements-paragraph": "En los próximos años, el Metro de la Ciudad de México tiene previsto seguir mejorando la experiencia de viaje de todos sus usuarios, especialmente de aquellas personas con discapacidad o movilidad reducida. Se trabajará en la ampliación de accesos accesibles en más estaciones, en la reducción de barreras arquitectónicas en zonas de correspondencia y en la mejora de los tiempos de espera mediante una planificación más eficiente del servicio. Asimismo, se reforzará la iluminación, la señalización y la información en andenes y pasillos para facilitar la orientación y hacer los traslados más claros y seguros, de modo que cada trayecto pueda realizarse de forma más cómoda, rápida e inclusiva."
+      },
+
+      "en": {
+        // Page title
+        "page-title": "Accessibility",
+
+        // Top bar
+        "accessibility-link": "ACCESSIBILITY",
+        "made-by": "MADE BY",
+        "language-btn": "EN",
+
+        // Image
+        "accessibility-img": "Accessibility in the Metro",
+
+        // Main content
+        "main-paragraph": "Mexico City Metro has as one of its main objectives to facilitate the comprehensive autonomy of people with disabilities so that all users can travel under equal conditions. Therefore, we offer, among others, the following marked services:",
+
+        // Services list
+        "service-1": "Bicycle parking",
+        "service-2": "Universal accessibility: elevators, ramps, handrails, tactile paving",
+        "service-3": "Assistance for people with visual and hearing disabilities",
+        "service-4": "Braille signage",
+        "service-5": "Reserved spaces on platforms and trains",
+
+        // Secondary block
+        "improvements-title": "Improvements planned for the coming years",
+        "improvements-paragraph": "In the coming years, the Mexico City Metro plans to continue improving the travel experience for all its users, especially for people with disabilities or reduced mobility. Work will be done on expanding accessible entrances in more stations, reducing architectural barriers in transfer areas, and improving waiting times through more efficient service planning. Likewise, lighting, signage, and information on platforms and corridors will be reinforced to facilitate orientation and make transfers clearer and safer, so that every journey can be made more comfortably, quickly, and inclusively."
+      }
+    };
+
+    // Función para cambiar el idioma
+    function setLanguage(lang) {
+      // Actualizar todos los elementos con id en el objeto texts
+      for (const key in texts[lang]) {
+        const element = document.getElementById(key);
+        if (element) {
+          if (element.tagName === 'IMG') {
+            // Para imágenes, actualizar el atributo alt
+            element.alt = texts[lang][key];
+          } else {
+            // Para otros elementos, actualizar el texto
+            element.textContent = texts[lang][key];
+          }
+        }
+      }
+
+      // Actualizar el botón de idioma
+      document.getElementById('language-btn').textContent = texts[lang]['language-btn'];
+
+      // Actualizar el atributo lang del html
+      document.documentElement.lang = lang;
+
+      // Actualizar el título de la página
+      document.title = texts[lang]['page-title'];
+
+      // Guardar preferencia de idioma
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function () {
+      // Configurar elementos
+      const langWrapper = document.querySelector('.util-top__lang');
+      const langBtn = document.getElementById('language-btn');
+      const langList = document.getElementById('language-list');
+
+      // Cargar idioma guardado o español por defecto
+      const savedLang = localStorage.getItem('preferred-language') || 'es';
+      setLanguage(savedLang);
+
+      // Abrir/cerrar lista de idiomas
+      langBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isOpen = langWrapper.classList.toggle('is-open');
+        langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Cambiar idioma al seleccionar uno
+      document.querySelectorAll('#language-list a').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          setLanguage(lang);
+          langWrapper.classList.remove('is-open');
+          langBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Cerrar selector al hacer clic fuera
+      document.addEventListener('click', function (e) {
+        if (!langWrapper.contains(e.target)) {
+          langWrapper.classList.remove('is-open');
+          langBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+/* Contenedor de la lista vertical de estaciones y la vía */
+.line-map {
+  position: relative;
+  list-style: none; /* Quita los números/viñetas de la lista*/
+  margin: 3.5rem 0 2rem 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Dibuja la linea vertical(dependiendo de la linea será de un color u otro) */
+.line-map.linea-7::before {
+  content: ""; /*Elemento vacio que dibuja la línea*/
+  position: absolute;
+  inset: 0 auto 0 60px; /* Top, right, bottom, left */
+  width: 14px;
+  background: #ffb74d;
+  border-radius: 10px; /*Bordes redondeados para aspecto visual*/
+}
+
+/* Estilo general de cada estación (texto y espacio para muescas + vía) */
+.stop {
+  position: relative;
+  padding: 30px 0 30px 125px; /* Deja hueco para línea + muesca */
+  color: #ffb74d;
+  font-weight: 700; /*Negrita para resaltar*/
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+/* Muesca horizontal que conecta cada estación con la línea vertical */
+.stop::before {
+  content: ""; /* Pequeño rectangulo horizontal*/
+  position: absolute;
+  inset: 50% auto auto 70px; /* Top, right, bottom, left */
+  transform: translateY(-50%); /*Realinea al centro exacto*/
+  width: 30px; /* Un poco más larga */
+  height: 8px; /* Más delgada para que parezca línea */
+  background: #ffb74d;
+  border-radius: 4px;
+}
+
+/* Efecto al pasar el ratón*/
+.stop:hover{
+  color:#d85f1d;
+  text-decoration: underline; /*Subrayado*/
+  cursor: pointer; /*Cursor de mano al pasar el ratón*/
+}
+
+/* Contenedor que organiza el layout en dos columnas */
+.contenedor {
+  display: flex; /*Crea dos columnas*/
+  align-items: flex-start; /*Alinea arriba*/
+  gap: 3rem; /*Separación horizontal entre columnas*/
+  padding: 2rem;
+}
+
+/* ====== Columna izquierda ====== */
+/* Columna izquierda con info de la linea (sidebar) */
+.sidebar-linea {
+  border-radius: 0.9rem;
+  padding: 1.2rem 1.4rem;
+  width: 320px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08); /*Sombreado*/
+}
+
+/* Cabecera del sidebar: numero y nombre de la línea */
+.sidebar-head {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0 0 10px 0;
+}
+
+/* Número de línea dentro del sidebar en grande */
+.line-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center; /*Centrado vertical y horizontal*/
+  font-weight: 800;
+  font-size: 28px;
+  color: #fff;
+  background: #ffb74d; /* rosa línea 1 */
+}
+
+/* Titulo del trayecto */
+.line-title {
+  font-family: "Playfair Display", serif; /* Fuente importada */
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  font-size: 18px;
+  line-height: 1.15; /*Separación entre lineas*/
+  color: #ffb74d;
+  margin: 0 0 0 0;
+}
+
+/* Parte resaltada dentro del título */
+.line-title strong {
+  font-weight: 800;
+}
+
+/* Subtítulo o descripción corta */
+.line-sub {
+  margin: 2px 0 0 0;
+  font-size: 12px;
+  letter-spacing: 0.12em; /*Espaciado entre letras*/
+  color: #777;
+}
+
+/* Tabs verticales (estaciones, incidencias...) */
+.tabs-vert {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 18px 0;
+}
+
+/* Cada pestaña vertical del menú */
+.tabs-vert .tab {
+  display: block;
+  padding: 10px 12px;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  color: #2b3a4a;
+  background: #e9eef5;
+  border-radius: 4px;
+}
+
+/* Pestaña seleccionada */
+.tabs-vert .tab.active {
+  background: #1f4f86;
+  color: #fff;
+}
+
+/* Título del bloque: "Otras líneas" */
+.otras h3 {
+  font-size: 16px;
+  color: #1f4f86;
+  margin: 14px 0;
+}
+
+/* Grid con los botones de otras líneas */
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(5, auto); /*5 columnas iguales*/
+  gap: 8px;
+  justify-content: flex-start;
+  margin: 0 0 14px 0;
+}
+
+/* Estilo general de cada badge de línea */
+.badge {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Colores especificos de cada línea */
+.l1  { background:#f48fb1; }
+.l3  { background:#81c784; }
+.l7  { background:#ffb74d; }
+.l9  { background:#8d6e63; }
+.l12 { background:#e57373; }
+
+/* ====== Columna derecha ====== */
+/* Panel de detalle de la estación seleccionada */
+.station-detail {
+  margin: 1.5rem 0 0 0;
+  padding: 1.5rem;
+  background: #fff8e6;
+  border-radius: 10px;
+  border: 2px solid #ffb74d;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /*Sombreado*/
+}
+
+/* Ocultar panel cuando no se usa */
+.station-detail--hidden {
+  display: none;
+}
+
+/* Título del panel de detalles */
+.station-detail h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  color: #ffb74d;
+}
+
+/* Texto del panel */
+.station-detail p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+}
+
+/* Texto adicional del panel  (descripción larga) */
+.station-detail__extra {
+  margin: 0.6rem 0 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Resaltar parada seleccionada */
+.stop--selected {
+  font-weight: 700;
+  text-decoration: underline; /*Subrayado*/
+}
+
+/* Ajustes del panel cuando se inserta dentro del flujo de la lista */
+.line-map .station-detail {
+  margin: 1rem 0 0 125px; /* Mismo hueco que el texto de las estaciones */
+  max-width: 620px; /* Opcional, para que no se haga gigante */
+}

@@ -1,0 +1,565 @@
+/* ==== BASE / RESETEO SUAVE ==== */
+/* Ajuste de caja para que el padding y el border no aumenten el ancho total */
+* { box-sizing: border-box; }
+/* Scroll suave al navegar */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #111;
+  background: #fff;
+}
+
+h1, h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Títulos elegantes */
+h3, h4, h5, h6 {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+}
+
+/* Enlaces sin subrayado por defecto */
+a { color: inherit; text-decoration: none; }
+/* Subrayado solo al pasar el ratón para indicar que es clicable */
+a:hover { text-decoration: underline; }
+/* Las imagenes nunca se salen de su contenedor */
+img { max-width: 100%; display: block; }
+
+/* ===== AVISO EMERGENTE ===== */
+/* Capa oscura que cubre toda la pantalla cuando se muestra el aviso */
+.aviso-overlay {
+  position: fixed;/* Se fija en toda la pantalla */
+  inset: 0; /* top/right/bottom/left: 0 */
+  background: rgba(0,0,0,0.45); /* capa oscura semitransparente */
+  display: flex; /* Para centrar la caja del aviso */
+  align-items: center;
+  justify-content: center;
+  z-index: 99999; /* Aparece por encima de todo */
+}
+
+/* Clase para ocultarlo */
+.aviso--oculto {
+  display: none; /* No ocupa espacio y no se ve */
+}
+
+/* Caja del aviso */
+.aviso-modal {
+  background: #fff;
+  max-width: 520px;
+  width: 90%;
+  padding: 1.8rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25); /* Sombra exterior */
+  position: relative; /* Para posicionar el botón de cierre por encima */
+  font-family: inherit; /* Hereda la fuente de la página */
+}
+
+/* Estilo para el botón de cierre (la X) */
+.aviso-cerrar {
+  position: absolute; /* Arriba a la derecha */
+  inset: 0.6rem 0.8rem auto auto; /* Top, right, bottom, left */
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer; /* Manita al pasar el ratón */
+}
+
+/* Estilo del título de aviso */
+.aviso-titulo {
+  margin: 0 0 0.6rem;
+  font-size: 1.4rem;
+}
+
+/* Estilo del texto de aviso */
+.aviso-texto {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ==== BANNER ==== */
+/* Contenedor del slider de imágenes*/
+.banner-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920/600; /* Mantiene cierta proporción (se adapta al responsive) */
+  overflow: hidden;
+}
+
+/* Cada una de las diapositivas del banner */
+.banner-slider .slide {
+  position: absolute;
+  inset: 0; /* top/right/bottom/left = 0, ocupa todo el banner */
+  opacity: 0; /* Todos los slides empiezan ocultos, si lo quitamos se verán todas las imágenes apiladas */
+  transition: opacity 1.5s ease-in-out; /* Suaviza el fundido (transición de opacidad) */
+}
+
+/* Imágen dentro de cada slide */
+.banner-slider .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Muestra toda la imagen sin recortar */
+  object-position: center;
+  display: block;
+}
+
+/* Animación de fundido cíclico entre diapositivas */
+@keyframes fadeLoop {
+  0% { opacity: 1; }
+  20% { opacity: 1; } /* Visible durante el primer tramo */
+  25% { opacity: 0; } /* Empieza a desvanecerse */
+  95% { opacity: 0; } /* Permanece invisible durante la mayor parte del ciclo */
+  100% { opacity: 1; } /* Vuelve a aparecer al final del ciclo */
+}
+
+/* Se aplican las mismas animaciones, desfasadas en el tiempo para que cada imagen se muestre en su "turno" */
+.banner-slider .slide:nth-child(1) { animation: fadeLoop 24s infinite; }
+.banner-slider .slide:nth-child(2) { animation: fadeLoop 24s infinite 6s; }
+.banner-slider .slide:nth-child(3) { animation: fadeLoop 24s infinite 12s; }
+.banner-slider .slide:nth-child(4) { animation: fadeLoop 24s infinite 18s; }
+
+/* ==== BARRA SUPERIOR UTILIDADES ==== */
+#util-top {
+  position: relative;
+  background: #fff;
+  border-width: 4px 0 1px 0; /* Franja superior más marcada y línea inferior fina */
+  border-style: solid;
+  border-color: #000;
+}
+
+/* Contenedor interno centrado de la barra de utilidades*/
+.util-top__inner {
+  max-width: 90%;
+  margin: 0 auto; /* El 0 aquí quita el margen vertical. El auto centra el contenedor*/
+  padding: 0.4rem 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2%;
+}
+
+/* Grupos de enlaces a la izquierda y derecha */
+.util-top__left, .util-top__right {
+  display: flex;
+  align-items: center;
+  gap: 1.4%;
+}
+
+/* Estilo general de enlaces de la barra (accesibilidad, hecho por, etc) */
+.util-top__link {
+  font-size: clamp(0.5rem, 2vw, 1.3rem);
+  letter-spacing: 0.02em;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: background .15s ease, color .15s ease;
+}
+
+.util-top__link:hover {
+  background: #f3f3f3;
+}
+
+/* texto de contacto con ligero énfasis */
+.util-top__contacto {
+  font-size: clamp(0.5rem, 2vw, 1.3rem);
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+/* Logo pequeño en la barra superior*/
+.util-top__logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.util-top__logo img {
+  height: 2.1rem;
+  width: auto;
+}
+
+/* ==== DESPLEGABLE DE IDIOMAS ==== */
+/* Contenedor del selector de idioma */
+.util-top__lang {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botón principal que muestra el idioma actual */
+.util-top__lang-btn {
+  font: inherit;
+  font-size: clamp(0.5rem, 2vw, 1.3rem);
+  padding: 0.4rem 1.8rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.util-top__lang-btn:hover {
+  background: #f7f7f7;
+  border-color: #999;
+}
+
+/* Indicador ▼ / ▲ que cambia según el estado (abierto/cerrado)*/
+.util-top__lang-btn::after {
+  content: "▼";
+  font-size: 0.8em;
+  margin-left: 0.3rem;
+}
+.util-top__lang.is-open .util-top__lang-btn::after {
+  content: "▲";
+}
+
+/* Lista de idiomas desplegable */
+.util-top__lang-list {
+  position: absolute;
+  top: 110%;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  padding: 0.5rem 0;
+  width: 9rem;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition: all 0.25s ease;
+  z-index: 9999;
+}
+
+/* Estado visible cuando el contenedor tiene la clase .is-open (lo controla JS) */
+.util-top__lang.is-open .util-top__lang-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Elementos del menú: opciones individuales */
+.util-top__lang-list a {
+  display: block;
+  padding: 0.8rem 1.4rem;
+  font-size: clamp(0.9rem, 2vw, 1.4rem);
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.03em;
+}
+
+.util-top__lang-list a:hover {
+  background: #f3f3f3;
+}
+
+/* ==== NAVEGACIÓN PRINCIPAL ==== */
+#main-nav {
+  position: relative;
+  z-index: 9; /* Se asegura de ir por encima de otros elementos */
+  background: #fff;
+  padding: 0.5rem 0;
+}
+
+/* Contenedor interno del logo principal de navegación */
+.main-nav__inner {
+  max-width: 90%;
+  height: 4.5vw; /* altura relativa al ancho de la pantalla */
+  max-height: 3.2rem; /* limite máximo de altura */
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enlace que envuelve el logo principal (por si se hace clic) */
+.main-nav__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Imagen del logo */
+.main-nav__logo img {
+  height: min(7vw, 5rem);
+  width: auto;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Pequeño efecto al pasar el ratón sobre el logo */
+.main-nav__logo:hover img {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ====== ORIGEN / DESTINO ====== */
+/* Label de los campos de origen y destino en el formulario de ruta */
+.route-form .field label {
+  font-size: clamp(0.6rem, 2vw, 1.2rem);
+  font-weight: 700;
+  margin: 0 0 0.4rem 0;
+  display: block;
+}
+
+/* Selects del formulario de ruta (misma apariencia que los inputs) */
+.route-form select {
+  font-size: clamp(0.6rem, 1.6vw, 1.1rem);
+  padding: 0.4rem 0.8rem;
+  height: 2.2rem;
+  border: 0.12rem solid #aaa;
+  border-radius: 0.5rem;
+}
+
+/* ===== BUSCADOR (mismo estilo visual que los select) ===== */
+/* Contenedor del buscador global (input + botón) */
+.global-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Input del buscador global (mismo estilo visual que los select) */
+.global-search input {
+  font-size: clamp(0.6rem, 1.6vw, 1.1rem);
+  padding: 0.4rem 0.8rem;
+  height: 2.2rem;
+  border: 0.12rem solid #aaa;   /* Mismo borde que el select */
+  border-radius: 0.5rem;        /* Mismas esquinas redondeadas */
+  box-sizing: border-box;
+}
+
+/* Botón "IR" junto al buscador */
+.global-search button {
+  font-size: clamp(0.6rem, 1.6vw, 1.1rem);
+  padding: 0.4rem 0.8rem;
+  height: 2.2rem;
+  border: 0.12rem solid #aaa;
+  border-radius: 0.5rem;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+/* Texto del <summary> en el bloque de opciones avanzadas */
+.more-options summary {
+  font-size: clamp(0.8rem, 1.4vw, 1.1rem);
+  margin: 1.2rem 0;
+  cursor: pointer;
+}
+
+/* Botón principal de acción (p.e: "Calcular trayecto") */
+.btn--primary {
+  margin-top: 1.2rem;
+  padding: 0.9rem 2rem;
+  font-size: clamp(0.6rem, 1.6vw, 1rem);
+  font-weight: 700;
+  background: #f57c20;
+  color: #fff;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: .2s;
+}
+
+/* Al pasar el ratón se hace mas oscuro el fondo */
+.btn--primary:hover {
+  background: #D85F1D;
+}
+
+/* Contenedor de pestañas (tabs) para cambiar entre vistas */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.2rem 0;
+}
+
+/* Estilo individual de cada pestaña */
+.tab {
+  font-size: clamp(0.6rem, 1.4vw, 1rem);
+  padding: 0.3rem 0.6rem;
+  border: 0.12rem solid #444;
+  background: #f7f7f7;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ==== CONTENIDO PRINCIPAL ==== */
+#content {
+  padding: 2rem 5%;
+}
+
+/* Contenedor que agrupa los dos paneles principales */
+.content__inner {
+  display: flex;
+  justify-content: center;
+  gap: 6%;
+  flex-wrap: wrap;/* Permite que los paneles salten a una segunda fila en pantallas pequeñas */
+}
+
+/* Cada columna/panel (Cálculo de trayecto, información en tiempo real, etc) */
+.panel {
+  flex: 0 0 45%; /* Ocupan aproximadamente un 45% cada uno en escritorio */
+  min-height: 60vh; /* Altura mínima para que no queden demasiado pequeños */
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 0.6rem;
+  padding: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Títulos centrados dentro de los paneles */
+.panel h2 {
+  font-size: 1.6rem;
+  letter-spacing: -0.4px;
+  text-align: center;
+  color: #1f4f86;
+}
+
+/* Títulos de panel con tamaños adaptables */
+#trayecto-title{
+  font-size: clamp(1rem, 2vw, 1.6rem);
+}
+
+.panel__subtitle{
+  font-size: clamp(0.8rem, 1.6vw, 1.2rem);
+}
+
+#tiempo-real-title{
+  font-size: clamp(1rem, 2vw, 1.6rem);
+}
+
+#mini-map-title{
+  font-size: clamp(1rem, 2vw, 1.6rem);
+}
+
+/* Cabecera del mini mapa (icono + título) */
+.mini-map__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Imagen redonda pequeña tipo avatar o icono de línea */
+.circle-img {
+  width: 8vw;
+  max-width: 3.5rem;
+  height: auto;  
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ==== Cuadrícula (flexible) de botones de líneas ==== */
+/* Contenedor que organiza los "cuadrados" de cada línea */
+.lines-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+/* Cada "cuadrado" que representa una línea */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto al pasar el ratón sobre una línea */
+.badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Colores especificos para cada línea */
+.l1  { background-color: #f48fb1; }
+.l3  { background-color: #81c784; }
+.l7  { background-color: #ffb74d; }
+.l9  { background-color: #8d6e63; }
+.l12 { background-color: #e57373; }
+
+/* ==== RESPONSIVE ==== */
+/* Ajustes de la barra superior en pantallas medias */
+@media (max-width: 1024px){
+  .util-top__inner{
+    padding: 0.6rem 2%;
+  }
+
+  .util-top__left, .util-top__right{
+    gap: 1rem;
+  }
+
+  .util-top__logo img{
+    height: 2rem;
+  }
+}
+
+/* Reorganización de la cabecera y paneles en móviles pequeños*/
+@media (max-width: 720px){
+  .util-top__inner{
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+
+  /* Izquierda pasa abajo */
+  .util-top__left{
+    order: 2;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* Derecha pasa arriba */
+  .util-top__right{
+    order: 1;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .util-top__logo img{
+    height: 1.8rem;
+  }
+
+  /* Paneles uno debajo de otro en vez de en dos columnas */
+  .content__inner{
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .panel{
+    flex: 1 1 100%;
+    min-height: auto;
+  }
+}
+
+/* main-nav */
+/* Ajustes del tamaño del logo en la navegación para móviles */
+@media (max-width: 768px) {
+  #main-nav {
+    padding: 0.5rem 0;
+  }
+  
+  .main-nav__logo img {
+    height: min(6vw, 3.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .main-nav__logo img {
+    height: min(10vw, 3rem);
+  }
+}

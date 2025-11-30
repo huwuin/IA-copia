@@ -1,0 +1,90 @@
+/* Contenedor principal de la página */
+.autoria-layout {
+  max-width: 1120px;
+  margin: 2.5rem auto 3rem; /* Centrado horizontal + márgenes superior e inferior */
+  padding: 0 1.5rem;
+}
+
+/* Tarjeta grande que contiene el listado de los autores */
+.autoria-card {
+  display: block; /* Asegura que sea un bloque completo*/
+  background: #fff;
+  border-radius: 16px; /* Esquinas redondeadas */
+  border: 1px solid #d9e1ec;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06); /* Sombreado*/
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* GRID donde van las 6 personas (3 columnas x 2 filas) */
+.autoria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columnas iguales */
+  gap: 2.5rem 2rem;
+  justify-items: center; /* Centra cada item horizontalmente*/
+  margin-bottom: 1.8rem;
+  align-items: start; /* Alinea cada autor desde arriba*/
+}
+
+.autoria-item {
+  text-align: center; /* Centra nombre y rol que desempeña cada autor*/
+}
+
+/* Círculo para la foto de cada autor */
+.autoria-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Hace que la imagen sea un círculo*/
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
+  display: block;
+  margin: 0 auto 0.9rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12); /* Sombreado*/
+}
+
+/* Nombre de los autores*/
+.autoria-nombre {
+  font-family: "Playfair Display", serif; /* Fuente importada*/
+  font-size: 1.15rem;
+  color: #1f4f86;
+  margin-bottom: 0.25rem;
+}
+
+/* Título principal  de la página */
+.autoria-title {
+  font-family: "Playfair Display", serif; /* Fuente importada*/
+  font-size: 2.6rem;
+  color: #1f4f86;
+  margin: 2rem 0 2rem;
+  text-align: center;
+}
+
+/* Texto debajo del nombre del autor */
+.autoria-rol {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Firma inferior  (si se usa)*/
+.autoria-firma {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #1f4f86;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .autoria-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Si se usa el móvil -> 1 columna*/
+@media (max-width: 600px) {
+  .autoria-grid {
+    grid-template-columns: 1fr;
+  }
+}

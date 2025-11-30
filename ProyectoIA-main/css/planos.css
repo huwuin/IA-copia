@@ -1,0 +1,94 @@
+/* Contenedor general */
+.org-planos {
+  max-width: 1120px; /* Ancho máximo */
+  margin: 2.5rem auto 3rem; /* Margen superior, centrado horizontal, margen inferior */
+  padding: 0 1.5rem;
+}
+
+.org-planos-title {
+  font-family: "Playfair Display", serif; /* Fuente importada */
+  font-size: 2.3rem;
+  margin: 1rem 0 2rem 0; /* Margen superior, margen horizontal, margen inferior */
+  color: #1f4f86;
+}
+
+/* GRID para mostrar varias tarjetas en una fila */
+.docs-grid {
+  max-width: 1100px; /* Ancho máximo */
+  margin: 2rem auto 2rem auto; /* Centrando horizontalmente */
+  padding: 0 1rem;
+  justify-content: center; /* Centra los elementos si sobran columnas*/
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Separación entre elementos */
+}
+
+/* Elementos */
+.doc-card {
+  height: 320px;
+  display: flex;
+  flex-direction: column; /* Dirección de los elementos en columna */
+  width: 260px; /* Ancho del elemento */
+  margin: 0 0 0 0;
+  border-radius: 10px; /* Esquinas redondeadas */
+  border: 1px solid #d0d7e2;
+  background: #fff;
+  overflow: hidden; /* Que nada se salga de las esquinas redondas */
+  text-decoration: none; /* Sin decoraciones */
+  color: inherit;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06); /* Sombreado */
+  transition: transform .15s ease, box-shadow .15s ease; /* Transición suave al hacer hover */
+}
+
+/* Título*/
+.doc-card__title {
+  margin: 0 0 0 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #1f4f86;
+}
+
+/* Efecto hover del elemento */
+.doc-card:hover {
+  transform: translateY(-3px); /* Levanta el elemento ligeramente (elevación) */
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12); /* Sombreado */
+}
+
+/*Miniatura del documento*/
+.doc-card__thumb {
+  height: 180px; /* Misma altura para todas las miniaturas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+}
+
+/* Imagen dentro de la miniatura */
+.doc-card__thumb img {
+  display: block;
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* La imagen cubre el area sin deformarse*/
+}
+
+/* Parte inferior: icono + texto */
+.doc-card__body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem; /* Espaciado entre icono y texto */
+  padding: 0.9rem 1rem 1rem 1rem; /* Márgenes internos */
+}
+
+/* Icono PDF (emoji) */
+.doc-card__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  margin: 0.1rem 0 0 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .docs-grid {
+    justify-content: center; /* En pantallas estrechas, centrado*/
+  }
+}
